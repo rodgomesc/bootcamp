@@ -12,7 +12,7 @@ export default function Home() {
           alt="Tênis"
         />
 
-        <strong>Tênis Muito Legal</strong>
+        <strong>Tênis Muito Legal super oferna na promoção</strong>
         <span>R$ 129,90</span>
         <button type="button">
           <div>
