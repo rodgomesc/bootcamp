@@ -1,90 +1,46 @@
-import React from 'react';
+/* eslint-disable react/prefer-stateless-function */
+import React, { Component } from 'react';
 import { MdShoppingCart } from 'react-icons/md';
 import { ProductList } from './styles';
+import api from '../../services/api';
+import { formatPrice } from '../../utils/format';
 
-export default function Home() {
-  return (
-    <ProductList>
-      <li>
-        <img
-          height={240}
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom1.jpg"
-          alt="Tênis"
-        />
+export default class Home extends Component {
+  state = {
+    products: [],
+  };
 
-        <strong>Tênis Muito Legal super oferna na promoção</strong>
-        <span>R$ 129,90</span>
-        <button type="button">
-          <div>
-            <MdShoppingCart size={16} color="#fff" /> 1
-          </div>
-          <span>Adicionar ao Carrinho</span>
-        </button>
-      </li>
-      <li>
-        <img
-          height={240}
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom1.jpg"
-          alt="Tênis"
-        />
+  async componentDidMount() {
+    const response = await api.get('products');
 
-        <strong>Tênis Muito Legal</strong>
-        <span>R$ 129,90</span>
-        <button type="button">
-          <div>
-            <MdShoppingCart size={16} color="#fff" /> 3
-          </div>
-          <span>Adicionar ao Carrinho</span>
-        </button>
-      </li>
-      <li>
-        <img
-          height={240}
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom1.jpg"
-          alt="Tênis"
-        />
+    const data = response.data.map(product => ({
+      ...product,
+      formatedPrice: formatPrice(product.price),
+    }));
 
-        <strong>Tênis Muito Legal</strong>
-        <span>R$ 129,90</span>
-        <button type="button">
-          <div>
-            <MdShoppingCart size={16} color="#fff" /> 3
-          </div>
-          <span>Adicionar ao Carrinho</span>
-        </button>
-      </li>
-      <li>
-        <img
-          height={240}
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom1.jpg"
-          alt="Tênis"
-        />
+    this.setState({ products: data });
+  }
 
-        <strong>Tênis Muito Legal</strong>
-        <span>R$ 129,90</span>
-        <button type="button">
-          <div>
-            <MdShoppingCart size={16} color="#fff" /> 3
-          </div>
-          <span>Adicionar ao Carrinho</span>
-        </button>
-      </li>
-      <li>
-        <img
-          height={240}
-          src="https://static.netshoes.com.br/produtos/tenis-de-caminhada-leve-confortavel/06/E74-0492-006/E74-0492-006_zoom1.jpg"
-          alt="Tênis"
-        />
+  render() {
+    const { products } = this.state;
 
-        <strong>Tênis Muito Legal</strong>
-        <span>R$ 129,90</span>
-        <button type="button">
-          <div>
-            <MdShoppingCart size={16} color="#fff" /> 3
-          </div>
-          <span>Adicionar ao Carrinho</span>
-        </button>
-      </li>
-    </ProductList>
-  );
+    return (
+      <ProductList>
+        {products.map(product => (
+          <li key={product.id}>
+            <img height={240} src={product.image} alt={product.title} />
+
+            <strong>{product.title}</strong>
+            <span>{product.formatedPrice}</span>
+            <button type="button">
+              <div>
+                <MdShoppingCart size={16} color="#fff" /> 1
+              </div>
+              <span>Adicionar ao Carrinho</span>
+            </button>
+          </li>
+        ))}
+      </ProductList>
+    );
+  }
 }
