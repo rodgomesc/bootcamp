@@ -27,7 +27,7 @@ function Cart({ cart }) {
                 <img src={product.image} alt={product.title} />
               </td>
               <td>
-                <strong>Tenis Muito Massa</strong>
+                <strong>{product.title} </strong>
                 <span>{product.formatedPrice}</span>
               </td>
               <td>
@@ -35,7 +35,7 @@ function Cart({ cart }) {
                   <button type="button">
                     <MdRemoveCircleOutline size={20} color="#7159c1" />
                   </button>
-                  <input type="number" value={1} readOnly />
+                  <input type="number" value={product.amount} readOnly />
                   <button type="button">
                     <MdAddCircleOutline size={20} color="#7159c1" />
                   </button>
