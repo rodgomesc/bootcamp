@@ -30,6 +30,7 @@ export const SubmitButton = styled(RectButton)`
   background: #7159c1;
   border-radius: 4px;
   margin-left: 10px;
+  opacity: ${props => (props.loading ? 0.7 : 1)};
   padding: 0 12px;
 `;
 
