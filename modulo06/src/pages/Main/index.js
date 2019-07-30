@@ -24,7 +24,7 @@ export default class Main extends Component {
     title: 'Usuários',
   };
 
-  static PropTypes = {
+  static propTypes = {
     navigation: PropTypes.shape({
       navigate: PropTypes.func,
     }).isRequired,
@@ -38,7 +38,6 @@ export default class Main extends Component {
 
   async componentDidMount() {
     const users = await AsyncStorage.getItem('users');
-    console.tron.log(`depois do get --> ${users}`);
     if (users) {
       this.setState({ users: JSON.parse(users) });
     }
