@@ -1,2 +1,0 @@
-# bootcamp
-bootcamp course
