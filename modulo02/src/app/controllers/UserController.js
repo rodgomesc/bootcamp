@@ -6,6 +6,7 @@ class UserController {
     if (userExists) {
       return res.status(400).json({ message: 'User already exists!' });
     }
+    // eslint-disable-next-line camelcase
     const { id, email, name, password_hash, provider } = await User.create(
       req.body
     );
