@@ -25,11 +25,6 @@ module.exports = {
         ondDelete: 'SET NULL',
         allowNull: true,
       },
-      provider: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-        allowNull: false,
-      },
       canceled_at: {
         type: Sequelize.DATE,
         allowNull: true,
