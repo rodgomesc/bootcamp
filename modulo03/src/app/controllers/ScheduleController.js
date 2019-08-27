@@ -13,6 +13,12 @@ class ScheduleController {
       },
     });
 
+    if (!checkUserProvider) {
+      return res
+        .status(401)
+        .json({ error: 'user must be a provider to create a scheduler' });
+    }
+
     const { date } = req.query;
     const parsedDate = parseISO(date);
 
