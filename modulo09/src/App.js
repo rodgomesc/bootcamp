@@ -1,12 +1,14 @@
 import React from 'react';
-import GlobalStyle from './styles/global';
+import { Router } from 'react-router-dom';
+// import GlobalStyle from './styles/global';
+import Routes from './routes';
+import history from './services/history';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
-
-    </div>
+    <Router history={history}>
+      <Routes />
+    </Router>
   );
 }
 
