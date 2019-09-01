@@ -5,7 +5,6 @@ import Routes from './routes';
 import history from './services/history';
 import './config/ReactotronConfig';
 
-console.tron('helloo world');
 function App() {
   return (
     <Router history={history}>
