@@ -7,7 +7,7 @@ import DefaultLayout from '~/pages/_layouts/default';
 
 import '~/config/ReactotronConfig';
 
-import store from '~/store';
+import { store } from '~/store';
 
 export default function RouteWrapper({
   component: Component,
