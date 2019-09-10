@@ -30,6 +30,7 @@ module.exports = {
     camelcase: 'off',
     'no-console': ['error', { allow: ['tron'] }],
     'react/jsx-props-no-spreading': 0,
+    'prefer-object-spread': 0,
   },
 
   settings: {

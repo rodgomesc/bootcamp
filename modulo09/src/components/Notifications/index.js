@@ -33,7 +33,6 @@ export default function Notifications() {
           }
         ),
       }));
-      console.tron.log(data);
       setNotifications(data);
     }
     loadNotifications();
